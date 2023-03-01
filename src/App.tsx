@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
+import './App.scss';
 
 const App = () =>
 {
-  return (
-    <div>This is conundrum.coffee</div>
-  );
+    return (
+        <div>This is conundrum.coffee</div>
+    );
 }
 
 export default App;
