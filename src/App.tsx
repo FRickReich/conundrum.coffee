@@ -1,16 +1,25 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Router from "./Pages/router";
+import { routerType } from "./types/router.types";
+
+import pages from "./data/pages";
 
 import "./App.scss";
 
 const App = () =>
 {
-    return (
+    const pageRoutes = pages.map(({ path, title, element } : routerType) =>
+    {
+        return <Route key={title} path={path} element={element} />;
+    });
+
+    return(
         <BrowserRouter>
-            <Router />
+            <Routes>
+                { pageRoutes }
+            </Routes>
         </BrowserRouter>
-    );
-};
+    )
+}
 
 export default App;
