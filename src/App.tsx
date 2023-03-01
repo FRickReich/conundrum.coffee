@@ -1,10 +1,16 @@
-import './App.scss';
+import { BrowserRouter } from "react-router-dom";
+
+import Router from "./Pages/router";
+
+import "./App.scss";
 
 const App = () =>
 {
     return (
-        <div>This is conundrum.coffee</div>
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
     );
-}
+};
 
 export default App;
