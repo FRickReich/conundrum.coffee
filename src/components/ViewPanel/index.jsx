@@ -4,7 +4,7 @@ import Scrollable from '../Scrollable';
 
 import './ViewPanel.scss';
 
-const ViewPanel = React.forwardRef((props : any, ref : LegacyRef<HTMLDivElement> ) =>
+const ViewPanel = React.forwardRef((props, ref) =>
 {
     return (
         <div className={`ViewPanel ${ props.className && props.className }`} ref={ ref }>

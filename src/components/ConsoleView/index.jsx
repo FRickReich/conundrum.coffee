@@ -3,7 +3,7 @@ import ViewPanelButton from '../ViewPanelButton';
 
 import './ConsoleView.scss';
 
-const ConsoleView = (props : any) =>
+const ConsoleView = (props) =>
 {
     return (
         <ViewPanel

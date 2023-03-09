@@ -1,6 +1,6 @@
 import './Scrollable.scss';
 
-const Scrollable = (props : any) =>
+const Scrollable = (props) =>
 {
     return (
         <div className={`Scrollable ${ props.inactive ? '' : 'active'}`}>

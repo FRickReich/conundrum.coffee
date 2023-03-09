@@ -3,7 +3,7 @@ import { AdPanel, ConsoleView, EditorView, ViewPanel } from '../components';
 
 import './EditorLayout.scss';
 
-const EditorLayout = (props : any) =>
+const EditorLayout = (props) =>
 {
     return (
         <div className="EditorLayout">

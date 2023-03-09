@@ -6,10 +6,10 @@ import './EditorView.scss';
 
 const EditorView = () =>
 {
-    const [canvasContext, setCanvasContext] = useState<any>(null);
+    const [canvasContext, setCanvasContext] = useState(null);
 
-    const canvasRef : React.RefObject<HTMLCanvasElement> = useRef<HTMLCanvasElement>(null);
-    const panelRef : any = useRef(null);
+    const canvasRef = useRef(null);
+    const panelRef = useRef(null);
 
     useEffect(() => {
         if (canvasRef.current && panelRef.current) {

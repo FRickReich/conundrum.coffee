@@ -1,6 +1,6 @@
 import './ViewPanelButton.scss';
 
-const ViewPanelButton = (props : any) =>
+const ViewPanelButton = (props) =>
 {
     return (
         <button className="ViewPanelButton" onClick={ props.onClick }>
