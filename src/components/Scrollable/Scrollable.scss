@@ -1,0 +1,26 @@
+@use './../../styles/' as *;
+
+.Scrollable
+{
+    display: flex;
+    flex-direction: column;
+
+    &.active
+    {
+        .Scrollable__container
+        {
+            overflow: auto;
+
+            &__content
+            {
+                margin: 0.5rem;
+            }
+        }
+    }
+
+    &__container
+    {
+        flex-grow: 1;
+        min-height: 0;
+    }
+}

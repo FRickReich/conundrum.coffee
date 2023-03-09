@@ -1,0 +1,28 @@
+@use './styles/' as *;
+
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+body
+{
+    font-family: 'Open Sans', sans-serif;
+    font-size: $font-size-default;
+    user-select: none;
+}
+
+body, html {
+    height: 100vh;
+}
+
+#root
+{
+    height: 100%;
+}
+
+canvas
+{
+    display: block;
+}

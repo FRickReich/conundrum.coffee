@@ -1,0 +1,39 @@
+$dark: #121212;
+$light: #FFFFFF;
+
+$elevation-0: lighten($dark, 0);
+$elevation-1: lighten($dark, 5);
+$elevation-2: lighten($dark, 7);
+$elevation-3: lighten($dark, 8);
+$elevation-4: lighten($dark, 9);
+$elevation-5: lighten($dark, 11);
+$elevation-6: lighten($dark, 12);
+$elevation-7: lighten($dark, 14);
+$elevation-8: lighten($dark, 15);
+$elevation-9: lighten($dark, 16);
+
+$primary-color: #BB86FC;
+$primary-text: $dark;
+
+$primary-color-variant: #3700B3;
+$primary-text-variant: $light;
+
+$secondary-color: #03DAC5;
+$secondary-text: $dark;
+
+$secondary-color-variant: #03DAC5;
+$secondary-text-variant: $dark;
+
+$background-color: $elevation-0;
+$background-text: $light;
+
+$surface-color: $elevation-1;
+$surface-text: $light;
+
+$success-color: #00897B;
+$warning-color: #FF8F00;
+$error-color:  #B00020;
+
+$text-emphasis-high: rgba($light, 0.87);
+$text-emphasis-medium: rgba($light, 0.60);
+$text-disabled: rgba($light, 0.38);

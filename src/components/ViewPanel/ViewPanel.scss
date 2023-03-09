@@ -1,0 +1,51 @@
+@use './../../styles/' as *;
+
+.ViewPanel
+{
+    position: relative;
+    background: $elevation-0;
+    overflow: hidden;
+
+    &:hover
+    {
+        &__heading
+        {
+            &__title
+            {
+                color: $surface-text;
+            }
+        }
+    }
+
+    &__heading
+    {
+        width: 100%;
+        height: 1.75rem;
+        background: $elevation-1;
+        display: flex;
+        justify-content: space-between;
+        align-self: center;
+
+        &__title
+        {
+            align-self: center;
+            margin: 0 0.5rem;
+            color: $text-emphasis-medium;
+        }
+        
+        &__menu
+        {
+            display: flex;
+            gap: 0.25rem;
+            align-self: center;
+            margin: 0 0.25rem;
+        }
+    }
+
+    &__content
+    {
+        height: calc(100% - 1.75rem);
+        display: flex;
+        justify-content: stretch;
+    }
+}

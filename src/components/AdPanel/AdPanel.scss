@@ -1,0 +1,17 @@
+@use './../../styles/' as *;
+
+.AdPanel
+{
+    flex-basis: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 4px solid #000000;
+    background: $elevation-0;
+    color: $surface-text;
+
+    &__display
+    {
+        
+    }
+}
