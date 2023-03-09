@@ -16,8 +16,9 @@ const EditorView = () =>
 
 		    const canvas = canvasRef.current;
 
-		    canvas.width = panelRef.current.clientWidth;
-		    canvas.height = panelRef.current.clientHeight;
+            canvas.width = panelRef.current.clientWidth;
+            canvas.height = panelRef.current.clientHeight;
+
 
             const context = canvas.getContext("2d");
             
@@ -41,12 +42,12 @@ const EditorView = () =>
             ref={panelRef}
             title={ "Editor" }
             content={
-                <canvas 
-                    // width={window.innerWidth}
-                    // height={window.innerHeight}
-                    onClick={handleClickTest}
-                    ref={canvasRef}
-                />
+                <div className="EditorView__canvas__container" >
+                    <canvas
+                        onClick={handleClickTest}
+                        ref={canvasRef}
+                    />
+                </div>
             }
         />
     );
