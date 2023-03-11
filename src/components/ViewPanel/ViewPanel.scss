@@ -3,17 +3,15 @@
 .ViewPanel
 {
     position: relative;
-    background: $elevation-0;
     overflow: hidden;
-
+    background: $elevation-0;
+    
     &:hover
     {
-        &__heading
+
+        .ViewPanel__heading__title
         {
-            &__title
-            {
-                color: $surface-text;
-            }
+            color: $surface-text;
         }
     }
 
@@ -44,7 +42,7 @@
 
     &__content
     {
-        height: calc(100% - 1.75rem);
+        height: 100%;
         display: flex;
         justify-content: stretch;
     }

@@ -4,6 +4,7 @@ import AdPanel from './AdPanel';
 import ConsoleView from './ConsoleView';
 import EditorView from './EditorView';
 import Scrollable from './Scrollable';
+import CanvasWindow from './CanvasWindow';
 
 export {
     ViewPanel,
@@ -11,5 +12,6 @@ export {
     AdPanel,
     ConsoleView,
     EditorView,
-    Scrollable
+    Scrollable,
+    CanvasWindow
 }

@@ -33,7 +33,7 @@ const EditorLayout = (props) =>
                             className="split-panel"
                             direction="vertical"
                             sizes={[75, 25]}
-                            minSize={[28, 28]}
+                            minSize={[100, 100]}
                             gutterSize={4}
                             >
                                 <EditorView/>

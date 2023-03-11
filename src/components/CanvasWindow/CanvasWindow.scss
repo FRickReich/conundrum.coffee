@@ -1,0 +1,7 @@
+@use './../../styles/' as *;
+
+.CanvasWindow
+{
+    height: calc(100% - 1.75rem);
+    width: 100%;
+}
