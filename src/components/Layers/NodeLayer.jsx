@@ -1,24 +1,24 @@
 import { useCallback } from 'react';
-import { Layer, useLayer } from 'react-canvas-resize';
+import { Layer } from 'react-canvas-resize';
 
-export default function NodeLayer({ color, onMouseDown })
+export default function NodeLayer({ onMouseDown })
 {
 	const handleDraw = useCallback(
 		({ canvas }) => {
 			const ctx = canvas.getContext('2d');
 			if (!ctx) throw new Error();
 
-			const { width, height } = canvas;
+			// const { width, height } = canvas;
 
 			const boxes = [
 		        { x: 200, y: 220, w: 100, h: 50 },
         		{ x: 100, y: 120, w: 100, h: 50 }
     		];
 
-			let isDown = false;
-			let dragTarget = null;
-			let startX = 0;
-			let startY = 0;
+			// let isDown = false;
+			// let dragTarget = null;
+			// let startX = 0;
+			// let startY = 0;
 
 			const drawLine = (from, to) => 
 			{
@@ -45,22 +45,22 @@ export default function NodeLayer({ color, onMouseDown })
 				ctx.restore();
 			}
 
-			const hitBox = (x, y) =>
-			{
-				let isTarget = null;
+			// const hitBox = (x, y) =>
+			// {
+			// 	let isTarget = null;
 
-				for (let i = 0; i < boxes.length; i++) {
-					const box = boxes[i];
+			// 	for (let i = 0; i < boxes.length; i++) {
+			// 		const box = boxes[i];
 
-					if (x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + box.h) {
-						dragTarget = box;
-						isTarget = true;
-						break;
-					}
-				}
+			// 		if (x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + box.h) {
+			// 			dragTarget = box;
+			// 			isTarget = true;
+			// 			break;
+			// 		}
+			// 	}
 
-				return isTarget;
-			}
+			// 	return isTarget;
+			// }
 
 			// const handleMouseDown = (e) =>
 			// {
@@ -104,7 +104,7 @@ export default function NodeLayer({ color, onMouseDown })
 			{
 				boxes.map((data, i) => 
 				{   
-					drawBox(data);
+					return drawBox(data);
 				});
 
 				drawLine({x: 40, y: 30}, { x: 150, y: 200 });
@@ -117,7 +117,7 @@ export default function NodeLayer({ color, onMouseDown })
 
 			ctx.restore();
 		},
-		[color]
+		[]
 	);
 
 	return (
