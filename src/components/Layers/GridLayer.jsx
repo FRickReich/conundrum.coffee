@@ -39,7 +39,7 @@ export default function GridLayer({ color }) {
 
 
 		},
-		[color]
+		[]
 	);
 
 	useLayer(handleDraw);
