@@ -5,6 +5,7 @@ import ConsoleView from './ConsoleView';
 import EditorView from './EditorView';
 import Scrollable from './Scrollable';
 import CanvasWindow from './CanvasWindow';
+import ProtectedRoute from './ProtectedRoute';
 
 export {
     ViewPanel,
@@ -13,5 +14,6 @@ export {
     ConsoleView,
     EditorView,
     Scrollable,
-    CanvasWindow
+    CanvasWindow,
+    ProtectedRoute
 }

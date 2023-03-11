@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { UserAuthContextProvider } from './context/UserAuthContext';
+
 import pages from "./data/pages";
 
 import "./App.scss";
@@ -12,11 +14,13 @@ const App = () =>
     });
 
     return(
-        <BrowserRouter>
-            <Routes>
-                { pageRoutes }
-            </Routes>
-        </BrowserRouter>
+        <UserAuthContextProvider>
+            <BrowserRouter>
+                <Routes>
+                    { pageRoutes }
+                </Routes>
+            </BrowserRouter>
+        </UserAuthContextProvider>
     )
 }
 
