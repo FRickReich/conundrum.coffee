@@ -1,11 +1,10 @@
-import { routerType } from "../types/router.types";
-
 import {
     Home,
-    About
+    About,
+    Editor
 } from "../pages";
 
-const pages: routerType[] =
+const pages =
 [
     {
         path: "/",
@@ -16,6 +15,11 @@ const pages: routerType[] =
         path: "/about",
         element: <About />,
         title: "about"
+    },
+    {
+        path: "/editor",
+        element: <Editor />,
+        title: 'editor'
     }
 ];
 

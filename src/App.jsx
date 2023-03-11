@@ -1,14 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { routerType } from "./types/router.types";
-
 import pages from "./data/pages";
 
 import "./App.scss";
 
 const App = () =>
 {
-    const pageRoutes = pages.map(({ path, title, element } : routerType) =>
+    const pageRoutes = pages.map(({ path, title, element }) =>
     {
         return <Route key={title} path={path} element={element} />;
     });

@@ -1,0 +1,116 @@
+@use './../styles/' as *;
+
+.EditorLayout
+{
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    .viewport
+    {
+        flex-grow: 1;
+
+        .horizontal
+        {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+
+            .browser
+            {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+
+                .split-panel
+                {
+                    flex-grow: 1;
+                }
+            }
+
+            .editor
+            {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+
+                .split-panel
+                {
+                    flex-grow: 1;
+                }
+            }
+
+            .elements
+            {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+
+                .split-panel
+                {
+                    flex-grow: 1;
+                }
+            }
+        }
+
+
+    }
+
+    .bar
+    {
+        flex-basis: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 0.5rem;
+        background: $surface-color;
+        border-top: 2px solid #000000;
+        color: $text-disabled;
+        
+        &.success
+        {
+            background: darken($success-color, 15);
+            border-top: 2px solid $success-color;
+            color: $success-color;
+        }
+
+        &.warning
+        {
+            background: darken($warning-color, 30);
+            border-top: 2px solid $warning-color;
+            color: $warning-color;
+        }
+
+        &.error
+        {
+            background: darken($error-color, 20);
+            border-top: 2px solid $error-color;
+            color: $error-color;
+        }
+    }
+}
+
+.gutter {
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    &.gutter-horizontal {
+        cursor: col-resize;
+    }
+    &.gutter-vertical {
+        cursor: row-resize;
+    }
+
+    &:hover
+    {
+        background: $elevation-5;
+    }
+}
+

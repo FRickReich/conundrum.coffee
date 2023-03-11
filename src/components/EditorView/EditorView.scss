@@ -1,0 +1,15 @@
+@use './../../styles/' as *;
+
+.EditorView
+{
+    .content
+    {
+        height: 100%;
+
+        .EditorView__canvas__container
+        {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

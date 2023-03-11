@@ -1,0 +1,30 @@
+@font-face
+{
+    font-family: 'Open Sans';
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+    font-weight: 300;
+}
+
+@font-face
+{
+    font-family: 'Open Sans Medium';
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+    font-weight: 400;
+}
+
+
+@font-face
+{
+    font-family: 'Open Sans Bold';
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+    font-weight: 700;
+}
+
+@font-face
+{
+    src: url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+    font-family: 'Source Code Pro', monospace;    
+}
+
+$font-size-default: 12px;
+$font-size-console: 14px;

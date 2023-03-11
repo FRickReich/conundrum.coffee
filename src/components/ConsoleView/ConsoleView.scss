@@ -1,0 +1,14 @@
+@use './../../styles/' as *;
+
+.ConsoleView
+{
+    background: #000000;
+    
+    .content
+    {
+        color: $text-emphasis-high;
+        font-size: $font-size-console;
+        font-family: 'Source Code Pro', monospace;
+        line-height: 1.25rem;
+    }
+}
