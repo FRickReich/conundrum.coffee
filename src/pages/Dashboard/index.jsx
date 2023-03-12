@@ -1,39 +1,26 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
 import { useUserAuth } from "../../context/UserAuthContext";
 
 const Dashboard = () =>
 {
-    const { logOut, user } = useUserAuth();
-    const navigate = useNavigate();
+    const { user } = useUserAuth();
 
     useEffect(() =>
     {
         console.log(user);
-    }, [user])
-    const handleLogout = async () =>
-    {
-        try{
-            await logOut();
-            navigate("/");
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
+    }, [user]);
 
     return (
         <>
             <div>
-                Hello, { user?.email }
+                Hello, { user?.email } - { user?.reloadUserInfo?.screenName}
                 <br />
             </div>
             <div>
-                <button onClick={handleLogout}>
-                    Log out
-                </button>
+                content...
             </div>
         </>
-  );
+    );
 };
 
 export default Dashboard;

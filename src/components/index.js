@@ -6,6 +6,8 @@ import EditorView from './EditorView';
 import Scrollable from './Scrollable';
 import CanvasWindow from './CanvasWindow';
 import ProtectedRoute from './ProtectedRoute';
+import HeaderBar from './HeaderBar';
+import Button from './Button';
 
 export {
     ViewPanel,
@@ -15,5 +17,7 @@ export {
     EditorView,
     Scrollable,
     CanvasWindow,
-    ProtectedRoute
+    ProtectedRoute,
+    HeaderBar,
+    Button
 }

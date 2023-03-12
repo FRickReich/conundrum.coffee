@@ -1,3 +1,4 @@
+import MainLayout from './MainLayout';
 import EditorLayout from './EditorLayout';
 
-export { EditorLayout }
+export { MainLayout, EditorLayout }

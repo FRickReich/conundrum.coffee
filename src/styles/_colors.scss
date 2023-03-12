@@ -13,12 +13,14 @@ $elevation-8: lighten($dark, 15);
 $elevation-9: lighten($dark, 16);
 
 $primary-color: #BB86FC;
+$primary-color-hover: lighten($primary-color, 10);
 $primary-text: $dark;
 
 $primary-color-variant: #3700B3;
 $primary-text-variant: $light;
 
 $secondary-color: #03DAC5;
+$secondary-color-hover: lighten($secondary-color, 10);
 $secondary-text: $dark;
 
 $secondary-color-variant: #03DAC5;
@@ -31,8 +33,16 @@ $surface-color: $elevation-1;
 $surface-text: $light;
 
 $success-color: #00897B;
+$success-color-hover: lighten($success-color, 10);
+
 $warning-color: #FF8F00;
+$warning-color-hover: lighten($warning-color, 10);
+
 $error-color:  #B00020;
+$error-color-hover: lighten($error-color, 10);
+
+$info-color-hover: #D1D1D1; 
+$info-color: lighten(#D1D1D1, 10);
 
 $text-emphasis-high: rgba($light, 0.87);
 $text-emphasis-medium: rgba($light, 0.60);

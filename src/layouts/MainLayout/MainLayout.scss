@@ -1,0 +1,35 @@
+@use './../../styles/' as *;
+
+.MainLayout
+{
+    // &__header
+    // {
+    //     display: block;
+    //     height: 50px;
+    //     padding: 1rem;
+    //     background: $dark;
+    //     color: $light;
+
+    //     display: flex;
+    //     justify-content: space-between;
+    //     align-items: stretch;
+
+    //     &__logo
+    //     {
+    //         background: $error_color;
+    //     }
+
+    //     &__menu
+    //     {
+    //         background: $error_color;
+    //         display: flex;
+    //         gap: 0.5rem;
+    //     }
+
+    // }
+
+    &__content
+    {
+
+    }
+}
