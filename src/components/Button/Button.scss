@@ -25,6 +25,11 @@
         font-size: 1rem;
     }
 
+    &:focus
+    {
+        outline: none;
+    }
+
     &:hover
     {
         background: $primary-color-hover;
