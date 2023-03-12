@@ -5,6 +5,7 @@ import { UserAuthContextProvider } from './context/UserAuthContext';
 import pages from "./data/pages";
 
 import "./App.scss";
+import { MainLayout } from "./layouts";
 
 const App = () =>
 {
@@ -15,11 +16,13 @@ const App = () =>
 
     return(
         <UserAuthContextProvider>
-            <BrowserRouter>
-                <Routes>
-                    { pageRoutes }
-                </Routes>
-            </BrowserRouter>
+            <MainLayout>
+                <BrowserRouter>
+                    <Routes>
+                        { pageRoutes }
+                    </Routes>
+                </BrowserRouter>
+            </MainLayout>
         </UserAuthContextProvider>
     )
 }
