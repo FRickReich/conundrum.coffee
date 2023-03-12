@@ -16,13 +16,13 @@ const App = () =>
 
     return(
         <UserAuthContextProvider>
-            <MainLayout>
-                <BrowserRouter>
+            <BrowserRouter>
+                <MainLayout>
                     <Routes>
                         { pageRoutes }
                     </Routes>
-                </BrowserRouter>
-            </MainLayout>
+                </MainLayout>
+            </BrowserRouter>
         </UserAuthContextProvider>
     )
 }

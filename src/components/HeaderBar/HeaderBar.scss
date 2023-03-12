@@ -2,5 +2,29 @@
 
 .HeaderBar
 {
+    height: 70px;
 
+    &__container
+    {
+        background: $surface-color;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1000;
+        padding: 1rem;
+
+        &__logo
+        {
+
+        }
+
+        &__menu
+        {
+            display: flex;
+            justify-content: center;
+            gap: .5rem;
+        }
+    }
 }

@@ -6,7 +6,8 @@ import {
     About,
     Editor,
     Login,
-    Dashboard
+    Dashboard,
+    Projects
 } from "../pages";
 
 const pages =
@@ -25,6 +26,11 @@ const pages =
         path: '/login',
         element: <Login />,
         title: 'Login'
+    },
+    {
+        path: '/projects',
+        element: <ProtectedRoute><Projects /></ProtectedRoute>,
+        title: 'Your Projects'
     },
     {
         path: '/dashboard',

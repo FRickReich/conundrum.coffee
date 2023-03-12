@@ -1,57 +1,48 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+
+import { Button } from './../../components';
+
 import { useUserAuth } from '../../context/UserAuthContext';
 
-const Login = () =>
-{
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
-    const [ error, setError ] = useState('');
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const { logIn, googleSignIn, githubSignIn } = useUserAuth();
+    const { logIn, githubSignIn } = useUserAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) =>
-    {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
 
         try {
             await logIn(email, password);
-            navigate('/dashboard');  
+            navigate('/projects');
         } catch (err) {
             setError(err.message);
         }
     }
 
-    const handleGoogleSignIn = async (e) => {
+    const handleGithubSignIn = async (e) => {
         e.preventDefault();
         try {
-          await googleSignIn();
-          navigate("/dashboard");
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
-
-      const handleGithubSignIn = async (e) =>
-      {
-        e.preventDefault();
-        try
-        {
             await githubSignIn();
-            navigate("/dashboard");
+
+            navigate("/projects");
         }
-        catch(error)
-        {
+        catch (error) {
             console.log(error.message);
         }
-      }
+    }
 
-    return(
+    return (
         <>
-            { error && <div style={{ color: 'red'}}>{error}</div> }
+            {error && <div style={{ color: 'red' }}>{error}</div>}
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -65,14 +56,18 @@ const Login = () =>
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <br />
-                <button type='submit'>Log In</button>
+                <Button type="submit" success>Login</Button>
+                <br />
+                <Button
+                    className="button-github"
+                    icon={<FontAwesomeIcon icon={faGithub} />}
+                    onClick={handleGithubSignIn}
+                >Sign in with github</Button>
                 <br />
 
-                <button onClick={handleGoogleSignIn}>Sign in with Google</button>
-                <button onClick={handleGithubSignIn}>Sign in with github</button>
-                <br />
-
-                <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
+                <p>
+                    Don't have an account? <Link to="/signup">Sign up</Link>
+                </p>
             </form>
         </>
     )
