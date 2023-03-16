@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleDown, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
+import { useOutsideClick } from './../../hooks';
+
 import Button from './../Button';
 
 import './ProjectSelector.scss';
@@ -12,13 +14,19 @@ const ProjectSelector = ({ userInfo, ...props }) =>
 {
     const [ open, setOpen ] = useState(false);
 
+    const handleClickOutside = () => {
+        setOpen(false);
+    };
+
+    const myRef = useOutsideClick(handleClickOutside);
+
     const handleOpen = () =>
     {
         setOpen(!open);
     }
 
     return (
-        <div className="ProjectSelector">
+        <div className="ProjectSelector" ref={myRef} >
             <div 
                 className={`ProjectSelector__header  ${ open ? 'open' : '' }`}
                 onClick={handleOpen}

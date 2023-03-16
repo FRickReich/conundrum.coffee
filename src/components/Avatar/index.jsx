@@ -15,7 +15,7 @@ const Avatar = ({ displayName, ...props }) =>
 
     const createInitials = (input) =>
     {
-        let initials = input.split(' ') .map(i => i.charAt(0)) .toString() .toUpperCase().split(',')
+        let initials = input.split(' ').map(i => i.charAt(0)).toString().toUpperCase().split(',')
 
         return initials;
     }

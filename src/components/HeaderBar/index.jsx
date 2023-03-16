@@ -6,6 +6,7 @@ import { Avatar, Button, ProjectSelector, ToggleMenu } from './../';
 import logo from './logo.png' 
 
 import './HeaderBar.scss';
+
 import { Link } from 'react-router-dom';
 
 const HeaderBar = ({ ...props }) =>
@@ -61,7 +62,6 @@ const HeaderBar = ({ ...props }) =>
                             <>
                                 <ToggleMenu
                                     userInfo={ userInfo }
-                                    
                                 >
                                     <Avatar displayName={ userInfo.name }/>
                                 </ToggleMenu>
@@ -69,10 +69,10 @@ const HeaderBar = ({ ...props }) =>
                         )
                         :
                         (
-                            <>
+                            <div className="main">
                                 <Button isLink to={"/login"} info>Log In</Button>
                                 <Button isLink to={"/signup"} info outline>Sign Up</Button>
-                            </>
+                            </div>
                         )
                     }
                 </div>

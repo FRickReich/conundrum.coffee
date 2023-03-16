@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-import { useUserAuth, useDatabase } from '../../context/';
+import { useUserAuth } from '../../context/';
+
+import { useOutsideClick } from './../../hooks';
 
 import Button from "../Button";
 
@@ -10,8 +12,14 @@ import './ToggleMenu.scss';
 const ToggleMenu = ({ children, userInfo, ...props }) =>
 {
     const [ toggle, setToggle ] = useState(false);
-    
-    const { logOut, user } = useUserAuth();
+
+    const handleClickOutside = () => {
+        setToggle(false);
+    };
+
+    const myRef = useOutsideClick(handleClickOutside);
+
+    const { logOut } = useUserAuth();
 
     const navigate = useNavigate();
 
@@ -33,23 +41,28 @@ const ToggleMenu = ({ children, userInfo, ...props }) =>
     return (
         <div
             className="ToggleMenu"
-            onClick={showMenu}
+            ref={myRef} 
             { ...props }
-        >
-            <div className={`ToggleMenu__toggle ${ toggle ? 'open' : ''}`}>
-                { children }
-            </div>
-            <div className={`ToggleMenu__container ${toggle ? 'open' : ''}`}>
-                <div className="ToggleMenu__container__section">
-                    <div className="name">{ userInfo.name }</div>
-                    <div className="email">{ userInfo.email }</div>
-                </div>
-                <div className="ToggleMenu__container__section">Menu</div>
-                <div className="ToggleMenu__container__section">
-                    <Button onClick={handleLogout} fluid info>Log Out</Button>
-                </div>
-                <div className="ToggleMenu__container__section">Footer</div>
-            </div>  
+            >
+                <>
+                    <div 
+                        className={`ToggleMenu__toggle ${ toggle ? 'open' : ''}`} 
+                        onClick={showMenu}>
+                        { children }
+                    </div>
+                    <div 
+             className={`ToggleMenu__container ${toggle ? 'open' : ''}`}>
+                        <div className="ToggleMenu__container__section">
+                            <div className="name">{ userInfo.name }</div>
+                            <div className="email">{ userInfo.email }</div>
+                        </div>
+                        <div className="ToggleMenu__container__section">Menu</div>
+                        <div className="ToggleMenu__container__section">
+                            <Button onClick={handleLogout} fluid info>Log Out</Button>
+                        </div>
+                        <div className="ToggleMenu__container__section">Footer</div>
+                    </div>  
+                </>
         </div>
     );
 };
