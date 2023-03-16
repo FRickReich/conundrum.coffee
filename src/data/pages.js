@@ -33,11 +33,6 @@ const pages =
         title: 'Your Projects'
     },
     {
-        path: '/dashboard',
-        element: <ProtectedRoute><Dashboard/></ProtectedRoute>,
-        title: 'Dashboard'
-    },
-    {
         path: "/about",
         element: <About />,
         title: "about"
@@ -46,6 +41,11 @@ const pages =
         path: "/editor",
         element: <Editor />,
         title: 'editor'
+    },
+    {
+        path: "/:username",
+        element: <Dashboard />,
+        title: "user"
     }
 ];
 

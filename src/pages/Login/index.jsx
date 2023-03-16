@@ -31,9 +31,11 @@ const Login = () => {
     const handleGithubSignIn = async (e) => {
         e.preventDefault();
         try {
-            await githubSignIn();
+            const user = await githubSignIn();
 
-            navigate("/projects");
+            console.log(user);
+
+            navigate(`/${ user }`);
         }
         catch (error) {
             console.log(error.message);

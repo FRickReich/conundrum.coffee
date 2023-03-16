@@ -63,6 +63,8 @@ export const UserAuthContextProvider = ({ children }) =>
                     email: user.email
                 });
             }
+
+            return user.reloadUserInfo.screenName;
         }
         catch(err)
         {
