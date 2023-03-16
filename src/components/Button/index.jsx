@@ -6,6 +6,7 @@ const Button = ({
     children,
     isLink,
     onClick,
+    fluid,
     to,
     primary,
     secondary,
@@ -28,6 +29,7 @@ const Button = ({
                     to={to}
                     className={`Button
                         ${ className ? className : '' }
+                        ${ fluid ? 'fluid' : '' }
                         ${ primary ? 'primary' : '' }
                         ${ secondary ? 'secondary' : '' }
                         ${ info ? 'info' : '' }
@@ -50,6 +52,7 @@ const Button = ({
                     onClick={onClick}
                     className={`Button
                         ${ className ? className : '' }
+                        ${ fluid ? 'fluid' : '' }
                         ${ primary ? 'primary' : '' }
                         ${ secondary ? 'secondary' : '' }
                         ${ info ? 'info' : '' }

@@ -33,11 +33,18 @@
     &:hover
     {
         background: $primary-color-hover;
+        color: $light;
+    }
+
+    &.fluid
+    {
+        width: 100%;
     }
 
     &.primary
     {
         background: $primary-color;
+        color: $light;
 
         &:hover
         {
@@ -49,6 +56,7 @@
     &.secondary
     {
         background: $secondary-color;
+        color: $light;
 
         &:hover
         {
@@ -97,6 +105,7 @@
     &.warning
     {
         background: $warning-color;
+        color: $light;
 
         &:hover
         {
@@ -108,6 +117,7 @@
     &.error
     {
         background: $error-color;
+        color: $light;
 
         &:hover
         {

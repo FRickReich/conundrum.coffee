@@ -6,7 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import { Button } from './../../components';
 
-import { useUserAuth } from '../../context/UserAuthContext';
+import { useUserAuth } from '../../context/';
 
 const Login = () => {
     const [email, setEmail] = useState('');

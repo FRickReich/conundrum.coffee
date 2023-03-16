@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { UserAuthContextProvider } from './context/UserAuthContext';
+import { DatabaseProvider } from "./context/DatabaseContext";
 
 import pages from "./data/pages";
 
@@ -15,15 +16,17 @@ const App = () =>
     });
 
     return(
-        <UserAuthContextProvider>
-            <BrowserRouter>
-                <MainLayout>
-                    <Routes>
-                        { pageRoutes }
-                    </Routes>
-                </MainLayout>
-            </BrowserRouter>
-        </UserAuthContextProvider>
+        <DatabaseProvider>
+            <UserAuthContextProvider>
+                <BrowserRouter>
+                    <MainLayout>
+                        <Routes>
+                            { pageRoutes }
+                        </Routes>
+                    </MainLayout>
+                </BrowserRouter>
+            </UserAuthContextProvider>
+        </DatabaseProvider>
     )
 }
 

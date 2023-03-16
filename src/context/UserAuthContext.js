@@ -8,7 +8,14 @@ import {
     GithubAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import {
+    query,
+    getDocs,
+    collection,
+    where,
+    addDoc
+} from "firebase/firestore";
+import { auth, db } from "../firebase";
 
 const userAuthContext = createContext();
 
@@ -36,17 +43,37 @@ export const UserAuthContextProvider = ({ children }) =>
         return signInWithPopup(auth, googleAuthProvider);
     }
 
-    function githubSignIn()
+    const githubSignIn = async () =>
     {
-        const githubAuthProvider = new GithubAuthProvider();
-        return signInWithPopup(auth, githubAuthProvider);
+        try
+        {
+            const githubAuthProvider = new GithubAuthProvider();
+            const res = await signInWithPopup(auth, githubAuthProvider);
+
+            const user = res.user;
+            const q = query(collection(db, "users"), where("uid", "==", user.uid));
+            const docs = await getDocs(q);
+        
+            if (docs.docs.length === 0) {
+                await addDoc(collection(db, "users"), {
+                    uid: user.uid,
+                    authProvider: "github",
+                    name: user.displayName,
+                    username: user.reloadUserInfo.screenName,
+                    email: user.email
+                });
+            }
+        }
+        catch(err)
+        {
+            console.error(err);
+        }
     }
 
     useEffect(() => 
     {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) =>
         {
-            console.log('Auth', currentUser);
             setUser(currentUser);
         });
 

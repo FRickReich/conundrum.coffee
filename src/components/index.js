@@ -8,6 +8,10 @@ import CanvasWindow from './CanvasWindow';
 import ProtectedRoute from './ProtectedRoute';
 import HeaderBar from './HeaderBar';
 import Button from './Button';
+import Avatar from './Avatar';
+import ToggleMenu from './ToggleMenu';
+import ProjectSelector from './ProjectSelector';
+import Panel from './Panel';
 
 export {
     ViewPanel,
@@ -19,5 +23,9 @@ export {
     CanvasWindow,
     ProtectedRoute,
     HeaderBar,
-    Button
+    Button,
+    Avatar,
+    ToggleMenu,
+    ProjectSelector,
+    Panel
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useUserAuth } from "../../context/UserAuthContext";
+import { useUserAuth } from "../../context/";
 
 const Dashboard = () =>
 {
