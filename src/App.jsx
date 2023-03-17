@@ -6,7 +6,7 @@ import { DatabaseProvider } from "./context/DatabaseContext";
 import pages from "./data/pages";
 
 import "./App.scss";
-import { MainLayout } from "./layouts";
+import { HeaderBar } from "./components";
 
 const App = () =>
 {
@@ -19,11 +19,10 @@ const App = () =>
         <DatabaseProvider>
             <UserAuthContextProvider>
                 <BrowserRouter>
-                    <MainLayout>
-                        <Routes>
-                            { pageRoutes }
-                        </Routes>
-                    </MainLayout>
+                    <HeaderBar/>
+                    <Routes>
+                        { pageRoutes }
+                    </Routes>
                 </BrowserRouter>
             </UserAuthContextProvider>
         </DatabaseProvider>

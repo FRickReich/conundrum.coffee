@@ -16,7 +16,7 @@ import {
 export const databaseContext = createContext();
 
 export const DatabaseProvider = ({ children }) =>
-{  
+{
     return (
         <databaseContext.Provider
             value={{ 

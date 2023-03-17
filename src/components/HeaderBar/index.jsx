@@ -41,7 +41,7 @@ const HeaderBar = ({ ...props }) =>
         <div className='HeaderBar'>
             <div className="HeaderBar__container">
                 <div className="HeaderBar__container__left">
-                    <Link to={user?.uid ? '/projects' : ''}>
+                    <Link to={user?.uid ? `/${userInfo.username}` : ''}>
                         <img src={ logo } className="logo" alt="" />
                     </Link>
                     <div className="divider"></div>

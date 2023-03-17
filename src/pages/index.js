@@ -5,6 +5,7 @@ import SignUp from './SignUp';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import Projects from './Projects';
+import CreateProject from "./CreateProject";
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     SignUp,
     Login,
     Dashboard,
-    Projects
+    Projects,
+    CreateProject
 }

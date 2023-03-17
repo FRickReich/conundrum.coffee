@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleDown, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-import { useOutsideClick } from './../../hooks';
+import { useOutsideClick, useProject } from './../../hooks';
 
 import Button from './../Button';
 
@@ -18,12 +18,18 @@ const ProjectSelector = ({ userInfo, ...props }) =>
         setOpen(false);
     };
 
+    const { isLoading, getProjectsByOwner, hasProjects, projects } = useProject();
+
     const myRef = useOutsideClick(handleClickOutside);
 
     const handleOpen = () =>
     {
         setOpen(!open);
     }
+
+    useEffect(() => {
+        getProjectsByOwner(userInfo.uid);
+    }, [userInfo, getProjectsByOwner])
 
     return (
         <div className="ProjectSelector" ref={myRef} >
@@ -44,16 +50,33 @@ const ProjectSelector = ({ userInfo, ...props }) =>
             </div>
             <div className={`ProjectSelector__menu ${ open ? 'open' : '' }`}>
                 <div className="ProjectSelector__menu__list">
-                <Panel
-                    info
-                >
-                    You have not yet created any projects.
-                    <br />
-                    <Link to="/projects">Create one now!</Link>
-                </Panel>
+                    {
+                        hasProjects  && isLoading === false ?
+                        (
+                            <ul>
+                            {
+                                projects.map((project, i) =>
+                                {
+                                    return <li><Link to={`/${userInfo.username}/${project.data().uid}`}>{ project.data().title }</Link></li>
+                                })
+                            }
+                            </ul>
+                        )
+                        :
+                        (
+                            <Panel
+                                info
+                            >
+                                You have not yet created any projects.
+                                <br />
+                                <Link to={`/${userInfo.username}/create-project`}>Create one now!</Link>
+                            </Panel>
+                        )
+                    }
+                    
                 </div>
                 <div className="ProjectSelector__menu__interaction">
-                    <Button isLink to="/projects" fluid secondary>Create new project</Button>
+                    <Button isLink to={`/${userInfo.username}/create-project`} fluid secondary>Create new project</Button>
                 </div>
             </div>
         </div>

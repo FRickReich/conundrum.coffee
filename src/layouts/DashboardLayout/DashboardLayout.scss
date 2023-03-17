@@ -1,0 +1,24 @@
+@use './../../styles/' as *;
+
+.DashboardLayout {
+    display: grid;
+    position: relative;
+    background: darken($light, 15);
+    grid-template-columns: 23rem auto;
+    gap: 0.5rem;
+    height: calc(100% - 70px);
+
+    &__sidebar
+    {
+        padding-left: 7rem;
+        overflow-y: auto;
+    }
+
+    &__content
+    {
+        padding: 1rem;
+        overflow-y: auto;
+        padding-right: 23rem;
+        padding-top: 2rem;
+    }
+}
