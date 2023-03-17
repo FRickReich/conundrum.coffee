@@ -3,10 +3,11 @@ import { ProtectedRoute } from "../components";
 import {
     Home,
     SignUp,
-    About,
     Editor,
     Login,
-    Dashboard
+    Dashboard,
+    Projects,
+    CreateProject
 } from "../pages";
 
 const pages =
@@ -27,19 +28,24 @@ const pages =
         title: 'Login'
     },
     {
-        path: '/dashboard',
-        element: <ProtectedRoute><Dashboard/></ProtectedRoute>,
-        title: 'Dashboard'
+        path: '/projects',
+        element: <ProtectedRoute><Projects /></ProtectedRoute>,
+        title: 'Your-projects'
     },
     {
-        path: "/about",
-        element: <About />,
-        title: "about"
+        path: "/:username",
+        element: <Dashboard />,
+        title: "user"
     },
     {
-        path: "/editor",
+        path: "/:username/create-project",
+        element: <ProtectedRoute><CreateProject/></ProtectedRoute>,
+        title: "create-project"
+    },
+    {
+        path: "/:username/:project",
         element: <Editor />,
-        title: 'editor'
+        title: "project-view"
     }
 ];
 

@@ -6,6 +6,12 @@ import EditorView from './EditorView';
 import Scrollable from './Scrollable';
 import CanvasWindow from './CanvasWindow';
 import ProtectedRoute from './ProtectedRoute';
+import HeaderBar from './HeaderBar';
+import Button from './Button';
+import Avatar from './Avatar';
+import ToggleMenu from './ToggleMenu';
+import ProjectSelector from './ProjectSelector';
+import Panel from './Panel';
 
 export {
     ViewPanel,
@@ -15,5 +21,11 @@ export {
     EditorView,
     Scrollable,
     CanvasWindow,
-    ProtectedRoute
+    ProtectedRoute,
+    HeaderBar,
+    Button,
+    Avatar,
+    ToggleMenu,
+    ProjectSelector,
+    Panel
 }

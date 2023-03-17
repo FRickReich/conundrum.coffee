@@ -1,5 +1,5 @@
 import Split from 'react-split';
-import { AdPanel, ConsoleView, EditorView, ViewPanel } from '../components';
+import { AdPanel, ConsoleView, EditorView, ViewPanel } from '../../components';
 
 import './EditorLayout.scss';
 

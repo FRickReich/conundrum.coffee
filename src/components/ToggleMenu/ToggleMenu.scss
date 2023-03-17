@@ -1,0 +1,82 @@
+@use './../../styles/' as *;
+
+.ToggleMenu
+{
+    position: relative;
+    cursor: pointer;
+
+    &__toggle
+    {
+        &.open
+        {
+            .Avatar__container
+            {
+                border: 2px solid $surface-color;
+                outline: 2px solid $light;
+            }
+        }
+    }
+
+    &__container
+    {
+        cursor: default;
+        border-radius: 5px;
+        background: $light;
+        border: 1px solid $info-color;
+        box-shadow: 0 0 25px 0px rgba(0,0,0,0.25);
+        position: absolute;
+        top: 45px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+
+        transition: opacity .15s ease-in-out;
+
+        opacity: 0;
+
+        &::after
+        {
+            content: " ";
+            z-index: 2000;
+            position: absolute;
+            top: -20px;
+            right: 6px;
+            border: 10px solid transparent;
+            border-bottom-color: transparent;
+            transition: border-bottom-color .15s ease-in-out;
+        }
+        
+        &.open
+        {
+            opacity: 1;
+            
+            &::after
+            {
+                border-bottom-color: $light;
+            }
+        }
+
+        &__section
+        {
+            padding: 1.2rem 1rem;
+            min-width: 15rem;
+            
+            .name
+            {
+                font-weight: 900;
+                padding-bottom: 0.7rem;
+            }
+
+            .email
+            {
+                font-size: 0.75rem;
+                color: $elevation-9;
+            }
+
+            &:not(:last-of-type)
+            {
+                border-bottom: 1px solid $info-color;
+            }
+        }
+    }
+}

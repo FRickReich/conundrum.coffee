@@ -1,3 +1,5 @@
+import MainLayout from './MainLayout';
 import EditorLayout from './EditorLayout';
+import DashboardLayout from './DashboardLayout';
 
-export { EditorLayout }
+export { MainLayout, EditorLayout, DashboardLayout }

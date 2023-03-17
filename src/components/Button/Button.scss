@@ -1,0 +1,128 @@
+@use './../../styles/' as *;
+
+.Button
+{
+    height: 100%;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: center;
+    text-align: center;
+    position: relative;
+    line-height: 1.2;
+    padding: 10px 16px;
+    min-width: 100px;
+    font-weight: 400;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    text-decoration: none !important;
+    cursor: pointer;
+    background: $primary-color;
+
+    .Button__icon
+    {
+        padding-right: 8px;
+        font-size: 1rem;
+    }
+
+    &:focus
+    {
+        outline: none;
+    }
+
+    &:hover
+    {
+        background: $primary-color-hover;
+        color: $light;
+    }
+
+    &.fluid
+    {
+        width: 100%;
+    }
+
+    &.primary
+    {
+        background: $primary-color;
+        color: $light;
+
+        &:hover
+        {
+            background: $primary-color-hover;
+            
+        }
+    }
+
+    &.secondary
+    {
+        background: $secondary-color;
+        color: $light;
+
+        &:hover
+        {
+            background: $secondary-color-hover;
+            
+        }
+    }
+
+    &.info
+    {
+        background: $info-color;
+        color: $dark;
+
+        &:hover
+        {
+            background: $info-color-hover;
+            color: $dark;
+        }
+
+        &.outline
+        {
+            background: transparent;
+            border-color: $info-color;
+            color: $info-color;
+
+            &:hover
+            {
+                border-color: $info-color-hover;
+                color: $info-color-hover;
+            }
+        }
+    }
+
+    &.success
+    {
+        background: $success-color;
+        color: $light;
+
+        &:hover
+        {
+            background: $success-color-hover;
+            color: $light;
+        }
+    }
+
+    &.warning
+    {
+        background: $warning-color;
+        color: $light;
+
+        &:hover
+        {
+            background: $warning-color-hover;
+            
+        }
+    }
+
+    &.error
+    {
+        background: $error-color;
+        color: $light;
+
+        &:hover
+        {
+            background: $error-color-hover;
+        }
+    }
+}

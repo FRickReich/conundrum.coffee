@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { UserAuthContextProvider } from './context/UserAuthContext';
+import { DatabaseProvider } from "./context/DatabaseContext";
 
 import pages from "./data/pages";
 
 import "./App.scss";
+import { HeaderBar } from "./components";
 
 const App = () =>
 {
@@ -14,13 +16,16 @@ const App = () =>
     });
 
     return(
-        <UserAuthContextProvider>
-            <BrowserRouter>
-                <Routes>
-                    { pageRoutes }
-                </Routes>
-            </BrowserRouter>
-        </UserAuthContextProvider>
+        <DatabaseProvider>
+            <UserAuthContextProvider>
+                <BrowserRouter>
+                    <HeaderBar/>
+                    <Routes>
+                        { pageRoutes }
+                    </Routes>
+                </BrowserRouter>
+            </UserAuthContextProvider>
+        </DatabaseProvider>
     )
 }
 

@@ -1,0 +1,80 @@
+@use './../../styles/' as *;
+
+.Panel
+{
+    width: 100%;
+    padding: 1.25rem;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 1.25rem;
+    color: $light;
+
+    &.primary
+    {
+        background: $primary-color;
+    }
+
+    &.secondary
+    {
+        background: $secondary-color;
+    }
+
+    &.info
+    {
+        background: $info-color;
+        color: $dark;
+    }
+
+    &.success
+    {
+        background: $success-color;
+    }
+
+    &.warning
+    {
+        background: $warning-color;
+    }
+
+    &.error
+    {
+        background: $error-color;
+    }
+
+    &.outline
+    {
+        background: transparent;
+        border-color: $dark;
+        color: $dark;
+
+        &.primary
+        {
+            border-color: $primary-color;
+        }
+    
+        &.secondary
+        {
+            border-color: $secondary-color;
+        }
+    
+        &.info
+        {
+            border-color: $info-color;
+        }
+    
+        &.success
+        {
+            border-color: $success-color;
+        }
+    
+        &.warning
+        {
+            border-color: $warning-color;
+        }
+    
+        &.error
+        {
+            border-color: $error-color;
+        }
+    }
+}

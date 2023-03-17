@@ -1,0 +1,72 @@
+@use './../../styles/' as *;
+
+.DashboardArea
+{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-height: 40rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 15px 0px rgba(0,0,0,0.25);
+
+    &__header
+    {
+        background: darken($light, 10);
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem 2rem;
+
+        &__items
+        {
+            align-items: center;
+            display: flex;
+
+            &__title
+            {
+                font-size: 2rem;
+                line-height: 3rem;
+                font-weight: 800;
+            }
+
+            &__iteractions
+            {
+                margin-left: auto;
+                display: flex;
+                justify-content: flex-end;
+                gap: 0.5rem;
+            }
+        }
+    }
+
+    &__content
+    {
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+        background: darken($light, 5);
+        display: flex;
+        flex-direction: column;
+        min-height: 40rem;
+
+        &__main
+        {
+            flex-grow: 1;
+        }
+
+        &__footer
+        {
+            background: darken($light, 10);
+            padding: 2rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+
+            .Button
+            {
+                min-width: 10rem;
+            }
+        }
+    }
+}

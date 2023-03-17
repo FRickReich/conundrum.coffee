@@ -4,6 +4,7 @@
 {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body
@@ -25,4 +26,34 @@ body, html {
 canvas
 {
     display: block;
+}
+
+
+.button-google
+{
+    background: $light;
+    border-color: $dark;
+    color: $dark;
+
+    &:hover
+    {
+        background: darken($light, 5);
+    }
+}
+
+.button-github
+{
+    background: $dark;
+    color: $light;
+
+    &:hover
+    {
+        background: lighten($dark, 10);
+        
+    }
+}
+
+a
+{
+    color: #3cafe2;
 }
