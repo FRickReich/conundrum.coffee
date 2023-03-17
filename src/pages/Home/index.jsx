@@ -8,8 +8,8 @@ const Home = () =>
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(user?.uid) navigate(`/${user.reloadUserInfo.screenName}`)
-      }, [user, navigate]);
+        if(user?.uid) navigate(`/${user.reloadUserInfo.screenName}`);
+    }, [user, navigate]);
 
     return (
         <div>
