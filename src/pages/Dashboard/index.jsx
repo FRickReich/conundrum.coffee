@@ -38,7 +38,7 @@ const Dashboard = () =>
                             {
                                 projects.map((project, i) =>
                                 {
-                                    return <li><Link to={`/${username}/${project.data().uid}`}>{ project.data().title }</Link></li>
+                                    return <li key={i}><Link to={`/${username}/${project.data().uid}`}>{ project.data().title }</Link></li>
                                 })
                             }
                         </ul>

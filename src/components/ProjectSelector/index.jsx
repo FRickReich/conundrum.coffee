@@ -57,7 +57,7 @@ const ProjectSelector = ({ userInfo, ...props }) =>
                             {
                                 projects.map((project, i) =>
                                 {
-                                    return <li><Link to={`/${userInfo.username}/${project.data().uid}`}>{ project.data().title }</Link></li>
+                                    return <li key={i}><Link to={`/${userInfo.username}/${project.data().uid}`}>{ project.data().title }</Link></li>
                                 })
                             }
                             </ul>

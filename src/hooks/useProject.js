@@ -39,16 +39,19 @@ export const useProject = () =>
     {
         try
         {
-            const q = query(collection(db, "projects"), where("ownerId", "==", userId));
-            const projects = await getDocs(q);
-            
-            if (projects.docs.length === 0) {
-                setHasProjects(false);
-            }
-            else {
-                setIsLoading(false)
-                setProjects(projects.docs);
-                setHasProjects(true);
+            if(userId)
+            {
+                const q = query(collection(db, "projects"), where("ownerId", "==", userId));
+                const projects = await getDocs(q);
+                
+                if (projects.docs.length === 0) {
+                    setHasProjects(false);
+                }
+                else {
+                    setIsLoading(false)
+                    setProjects(projects.docs);
+                    setHasProjects(true);
+                }
             }
         }
         catch(err)
