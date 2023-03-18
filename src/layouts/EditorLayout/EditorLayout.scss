@@ -2,7 +2,8 @@
 
 .EditorLayout
 {
-    height: 100%;
+    height: calc(100% - 70px);
+    border-top: 2px solid $elevation-5;
 
     display: flex;
     flex-direction: column;
