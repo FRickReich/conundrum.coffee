@@ -1,6 +1,13 @@
 import { useState } from "react";
+import { customAlphabet } from 'nanoid';
+import { useNavigate, useParams } from "react-router";
 
-import { useProject } from "../../hooks";
+import {
+    collection,
+    addDoc
+} from "firebase/firestore";
+
+import { auth, db } from "../../firebase";
 
 import { DashboardLayout } from "../../layouts";
 import DashboardArea from "../../components/DashboardArea";
@@ -10,7 +17,28 @@ const CreateProject = () =>
 {
     const [inputs, setInputs] = useState({});
 
-    const { createProject } = useProject();
+    const { username } = useParams();
+
+    const navigate = useNavigate();
+
+    const createProject = async (data) =>
+    {
+        const { projectTitle } = data;
+
+        const nanoid = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 10);
+        let projectId = await nanoid();
+
+        console.log(data);
+
+        await addDoc(collection(db, "projects"),
+        {
+            uid: projectId,
+            ownerId: auth.currentUser.uid,
+            title: projectTitle
+        });
+
+        await navigate(`/${username}/${projectId}`);
+    }
 
     const handleChange = (event) => {
         const name = event.target.name;
