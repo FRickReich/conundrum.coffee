@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-export const useZoom = () =>
-{
-    const [ currentZoom, setCurrentZoom ] = useState(1);
+export const useZoom = (initialState) => {
+    const [ currentZoom , setCurrentZoom ] = useState(initialState);
+
     const [ isZoomResetAllowed, setIsZoomResetAllowed ] = useState(false);
-    const [ isowZoomInAllowed, setIsZoomInAllowed ] = useState(false);
+    const [ isZoomInAllowed, setIsZoomInAllowed ] = useState(false);
     const [ isZoomOutAllowed, setIsZoomOutAllowed ] = useState(false);
 
     const handleZoomReset = () =>
@@ -30,6 +30,7 @@ export const useZoom = () =>
             setCurrentZoom(currentZoom + 1);
         }
     };
+
 
     useEffect(() =>
     {
@@ -58,5 +59,13 @@ export const useZoom = () =>
         }
     }, [currentZoom]);
 
-    return [ currentZoom, handleZoomIn, handleZoomOut, handleZoomReset, isowZoomInAllowed, isZoomOutAllowed, isZoomResetAllowed ];
+    return {
+        currentZoom,
+        handleZoomReset,
+        handleZoomIn,
+        handleZoomOut,
+        isZoomResetAllowed,
+        isZoomInAllowed,
+        isZoomOutAllowed
+    };
 }

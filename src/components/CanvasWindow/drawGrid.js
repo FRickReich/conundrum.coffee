@@ -4,7 +4,6 @@ export const drawGrid = (
 ) => {
     if(ctx, data)
     {
-
         let s = 24 / data.zoom;
         let pL = 0;
         let pT = 0;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CanvasLayer } from './CanvasLayer';
 
-import { useKeyPress } from './../../hooks';
+import { useKeyPress, useZoom } from './../../hooks';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus, faArrowsToDot } from '@fortawesome/free-solid-svg-icons';
@@ -13,41 +13,22 @@ const CanvasWindow = ({ ...props }) =>
     const [width, setWidth] = useState(100);
     const [height, setHeight] = useState(100);
 
-    const [ zoom, setZoom ] = useState(1);
-    const [ isZoomResetAllowed, setIsZoomResetAllowed ] = useState(false);
-    const [ isowZoomInAllowed, setIsZoomInAllowed ] = useState(false);
-    const [ isZoomOutAllowed, setIsZoomOutAllowed ] = useState(false);
-
-    const handleZoomReset = () =>
-    {
-        if(zoom !== 1)
-        {
-            setZoom(1);
-        }
-    };
-
-    const handleZoomIn = () =>
-    {
-        if(zoom > 1)
-        {
-            setZoom(zoom - 1);
-        }
-    };
-
-    const handleZoomOut = () =>
-    {
-        if(zoom < 4)
-        {
-            setZoom(zoom + 1);
-        }
-    };
-
 	const handleContextMenu = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
 
         // ... context menu goes here...
 	};
+
+    const {
+        currentZoom,
+        handleZoomReset,
+        handleZoomIn,
+        handleZoomOut,
+        isZoomResetAllowed,
+        isZoomInAllowed,
+        isZoomOutAllowed
+    } = useZoom(1);
 
     useKeyPress(['-', '+', '.'], (event) => {
         switch(event.key)
@@ -64,33 +45,6 @@ const CanvasWindow = ({ ...props }) =>
         }
     });
 
-    useEffect(() =>
-    {
-        switch(zoom)
-        {
-            case 1:
-                setIsZoomResetAllowed(false);
-                setIsZoomInAllowed(false);
-                setIsZoomOutAllowed(true);
-                break;
-            case 2:
-                setIsZoomResetAllowed(true);
-                setIsZoomInAllowed(true);
-                setIsZoomOutAllowed(true);
-                break;
-            case 3:
-                setIsZoomResetAllowed(true);
-                setIsZoomInAllowed(true);
-                setIsZoomOutAllowed(true);
-                break;
-            case 4:
-                setIsZoomResetAllowed(true);
-                setIsZoomInAllowed(true);
-                setIsZoomOutAllowed(false);
-                break;
-        }
-    }, [zoom]);
-
     useEffect(() => {
         const resizeObserver = new ResizeObserver((event) => {
             setWidth(event[0].contentBoxSize[0].inlineSize);
@@ -106,7 +60,7 @@ const CanvasWindow = ({ ...props }) =>
             onContextMenu={handleContextMenu}
             className="CanvasWindow"
         >
-            <CanvasLayer width={width} height={height} zoom={zoom}/>
+            <CanvasLayer width={width} height={height} zoom={currentZoom}/>
             
             <div className="CanvasWindow__menu">
                 <button
@@ -118,7 +72,7 @@ const CanvasWindow = ({ ...props }) =>
                         />
                 </button>
                 <button
-                    className={`CanvasWindow__menu__button ${ isowZoomInAllowed ? '' : 'disabled' }`}
+                    className={`CanvasWindow__menu__button ${ isZoomInAllowed ? '' : 'disabled' }`}
                     onClick={handleZoomIn}
                 >
                     <FontAwesomeIcon
