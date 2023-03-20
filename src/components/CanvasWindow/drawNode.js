@@ -4,12 +4,23 @@ export const drawNode = (
 ) => {
     if(ctx)
     {
-        const { x, y, w, h, title = "Default" } = data;
+        const { x, y, w, h, title = "Default", zoom } = data;
 
-        const drawConnectionDot = ({ x, y, isFilled, color = "grey" }) =>
+        const handleSize = (input) =>
+        {
+            return (input / zoom)
+        };
+
+        const zoomedX = handleSize(x);
+        const zoomedY = handleSize(y);
+        const zoomedW = handleSize(w);
+        const zoomedH = handleSize(h);
+
+        const drawConnectionDot = ({ x, y, isFilled, size, color = "grey" }) =>
         {
             ctx.beginPath();
-            ctx.arc(x, y, 3, 0, 2 * Math.PI);
+            ctx.lineWidth = handleSize(1);
+            ctx.arc(x, y, handleSize(size || 3), 0, 2 * Math.PI);
     
             if(isFilled === true)
             {
@@ -22,17 +33,28 @@ export const drawNode = (
                 ctx.stroke();
             }
         }
+
+        const mainInput = ({ color = "grey" }) =>
+        {    
+            drawConnectionDot({
+                x: zoomedX + handleSize(10), 
+                y: zoomedY + handleSize(10),
+                size: 5,
+                isFilled: false,
+                color
+            });
+        }
     
         const inputProperty = ({ title, color = "grey", textColor = "white" }) =>
         {
             ctx.fillStyle = textColor
-            ctx.font = "12px helvetica";
+            ctx.font = `${handleSize(12)}px Helvetica`;
             ctx.textAlign = "left";
-            ctx.fillText(title, x + 20, y + 39);
+            ctx.fillText(title, zoomedX + handleSize(20), zoomedY + handleSize(39));
     
             drawConnectionDot({
-                x: x + 10, 
-                y: y + 35,
+                x: zoomedX + handleSize(10), 
+                y: zoomedY + handleSize(35),
                 isFilled: false,
                 color
             });
@@ -41,20 +63,19 @@ export const drawNode = (
         const outputProperty = ({ title, color = "grey", textColor = "white" }) =>
         {
             ctx.fillStyle = textColor
-            ctx.font = "12px helvetica";
+            ctx.font = `${handleSize(12)}px Helvetica`;
             ctx.textAlign = "right";
-            ctx.fillText(title, (x + w) - 20, y + 39);
+            ctx.fillText(title, (zoomedX + zoomedW) - handleSize(20), zoomedY + handleSize(39));
     
             drawConnectionDot({
-                x: (x + w) - 10, 
-                y: y + 35,
+                x: (zoomedX + zoomedW) - handleSize(10), 
+                y: zoomedY + handleSize(35),
                 isFilled: false,
                 color
             });
         }
     
         ctx.save();
-    
         
         // shadow of node box
         ctx.beginPath();
@@ -66,31 +87,34 @@ export const drawNode = (
         // background of node box
         ctx.beginPath();
         ctx.fillStyle = "black";
-        ctx.roundRect(x, y, w, h, 5);
+        ctx.roundRect(zoomedX, zoomedY, zoomedW, zoomedH, 5);
         ctx.fill();
     
         // background of title
         ctx.beginPath();
         ctx.fillStyle = "#333333";
-        ctx.fillRect(x, y, w, 20, 5);
+        ctx.fillRect(zoomedX, zoomedY, zoomedW, handleSize(20));
         ctx.fill();
     
         // title of node box
         ctx.beginPath();
-        ctx.font = "12px Helvetica";
+        ctx.font = `${handleSize(12)}px Helvetica`;
         ctx.fillStyle = 'white';
-        ctx.fillText(title, x + 5, y + 15);
+        ctx.fillText(title, zoomedX + handleSize(23), zoomedY + handleSize(14));
     
         // line below title of node box
         ctx.beginPath();
-        ctx.strokeStyle = "#777777";
-        ctx.moveTo(x, y + 20);
-        ctx.lineTo(x + w, y + 20);
+        ctx.lineWidth = handleSize(2);
+        ctx.strokeStyle = "#555555";
+        ctx.moveTo(zoomedX, zoomedY +  handleSize(20));
+        ctx.lineTo(zoomedX + zoomedW, zoomedY + handleSize(20));
+        ctx.stroke();
         
-        // input section
+        mainInput({ title: "str", color: "red"});
+        
+        inputProperty({ title: "str", color: "cyan"});
         
         // input indicator
-        inputProperty({ title: "str", color: "cyan"});
     
         // output indicator
         outputProperty({ title: "return", color: "cyan", textColor: "cyan" });

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export const useZoom = (initialState) => {
     const [ currentZoom , setCurrentZoom ] = useState(initialState);
+    const [ maxZoom, setMaxZoom ] = useState(2);
 
     const [ isZoomResetAllowed, setIsZoomResetAllowed ] = useState(false);
     const [ isZoomInAllowed, setIsZoomInAllowed ] = useState(false);
@@ -19,48 +20,50 @@ export const useZoom = (initialState) => {
     {
         if(currentZoom > 1)
         {
-            setCurrentZoom(currentZoom - 1);
+            setCurrentZoom(currentZoom - 0.5);
         }
     };
 
     const handleZoomOut = () =>
     {
-        if(currentZoom < 4)
+        if(currentZoom < maxZoom)
         {
-            setCurrentZoom(currentZoom + 1);
+            setCurrentZoom(currentZoom + 0.5);
         }
     };
 
 
     useEffect(() =>
     {
-        switch(currentZoom)
+        if(currentZoom === 1)
         {
-            case 1:
-                setIsZoomResetAllowed(false);
-                setIsZoomInAllowed(false);
-                setIsZoomOutAllowed(true);
-                break;
-            case 2:
-                setIsZoomResetAllowed(true);
-                setIsZoomInAllowed(true);
-                setIsZoomOutAllowed(true);
-                break;
-            case 3:
-                setIsZoomResetAllowed(true);
-                setIsZoomInAllowed(true);
-                setIsZoomOutAllowed(true);
-                break;
-            case 4:
-                setIsZoomResetAllowed(true);
-                setIsZoomInAllowed(true);
-                setIsZoomOutAllowed(false);
-                break;
+            setIsZoomResetAllowed(false);
+            setIsZoomInAllowed(false);
+            setIsZoomOutAllowed(true);
         }
-    }, [currentZoom]);
+        else if(currentZoom > 1 && currentZoom < maxZoom)
+        {
+            setIsZoomResetAllowed(true);
+            setIsZoomInAllowed(true);
+            setIsZoomOutAllowed(true);
+        }
+        else if(currentZoom === maxZoom)
+        {
+            setIsZoomResetAllowed(true);
+            setIsZoomInAllowed(true);
+            setIsZoomOutAllowed(false);
+        }
+    }, [
+        currentZoom,
+        maxZoom,
+        handleZoomIn,
+        handleZoomOut,
+        handleZoomReset
+    ]);
 
     return {
         currentZoom,
+        maxZoom,
         handleZoomReset,
         handleZoomIn,
         handleZoomOut,

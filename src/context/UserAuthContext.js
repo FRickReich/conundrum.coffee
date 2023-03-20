@@ -38,7 +38,7 @@ export const UserAuthContextProvider = ({ children }) =>
         return signOut(auth);
     }
 
-    function googleSignIn() {
+    const googleSignIn = () => {
         const googleAuthProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleAuthProvider);
     }

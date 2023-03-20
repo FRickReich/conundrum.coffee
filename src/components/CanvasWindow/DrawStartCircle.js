@@ -5,11 +5,14 @@ export const drawStartCircle = (
     if(ctx)
     {
         const { zoom, x, y, state } = data;
-
+        
         const handleSize = (input) =>
         {
             return (input / zoom)
         };
+
+        const zoomedX = handleSize(x);
+        const zoomedY = handleSize(y);
     
         ctx.save();
     
@@ -20,7 +23,7 @@ export const drawStartCircle = (
         ctx.shadowBlur = 15;
     
         ctx.beginPath();
-        ctx.arc(x, y, 35 / zoom, 0, 2 * Math.PI);
+        ctx.arc(zoomedX, zoomedY, 35 / zoom, 0, 2 * Math.PI);
         ctx.fillStyle = "black";
         ctx.fill();
     
@@ -29,27 +32,24 @@ export const drawStartCircle = (
         {
             case "stop":
                 ctx.fillStyle = "red";
-                ctx.fillRect(x - handleSize(13), y - handleSize(13), handleSize(26), handleSize(26));
+                ctx.fillRect(zoomedX - handleSize(13), zoomedY - handleSize(13), handleSize(26), handleSize(26));
                 break;
             case "pause":
                 ctx.fillStyle = "orange";
-                ctx.fillRect(x - 13, y - 13, 10, 26);
-                ctx.fillRect(x + 13, y - 13, -10, 26);
+                ctx.fillRect(zoomedX - 13, zoomedY - 13, 10, 26);
+                ctx.fillRect(zoomedX + 13, zoomedY - 13, -10, 26);
                 break;
             case "play":
-                ctx.moveTo(x + 15, y );
-                ctx.lineTo(x - 7, y - 15);
-                ctx.lineTo(x - 7, y + 15);
+                ctx.moveTo(zoomedX + 15, zoomedY );
+                ctx.lineTo(zoomedX - 7, zoomedY - 15);
+                ctx.lineTo(zoomedX - 7, zoomedY + 15);
                 ctx.fillStyle = "green";
                 break;
             default:
                 ctx.fillStyle = "grey";
-                ctx.fillRect(x - 13, y - 13, 26, 26);
+                ctx.fillRect(zoomedX - 13, zoomedY - 13, 26, 26);
         }
         ctx.fill();
         
     }
-    
-    
-    
 };
