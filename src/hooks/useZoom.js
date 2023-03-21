@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 
 export const useZoom = (initialState) => {
     const [ currentZoom , setCurrentZoom ] = useState(initialState);
@@ -8,30 +8,36 @@ export const useZoom = (initialState) => {
     const [ isZoomInAllowed, setIsZoomInAllowed ] = useState(false);
     const [ isZoomOutAllowed, setIsZoomOutAllowed ] = useState(false);
 
-    const handleZoomReset = () =>
-    {
-        if(currentZoom !== 1)
+    // const handleZoomReset = () =>
+    // {
+    //     if(currentZoom !== 1)
+    //     {
+    //         setCurrentZoom(1);
+    //     }
+    // };
+
+    const handleZoomReset = useCallback(() => {
+                if(currentZoom !== 1)
         {
             setCurrentZoom(1);
         }
-    };
+    }, [currentZoom]);
 
-    const handleZoomIn = () =>
-    {
+    const handleZoomIn = useCallback(() => {
         if(currentZoom > 1)
         {
             setCurrentZoom(currentZoom - 0.5);
         }
-    };
+    }, [currentZoom]);
 
-    const handleZoomOut = () =>
-    {
+    const handleZoomOut = useCallback(() => {
         if(currentZoom < maxZoom)
         {
             setCurrentZoom(currentZoom + 0.5);
         }
-    };
+    }, [currentZoom, maxZoom]);
 
+    const changeMaxZoom = (factor) => setMaxZoom(factor);
 
     useEffect(() =>
     {
@@ -64,11 +70,13 @@ export const useZoom = (initialState) => {
     return {
         currentZoom,
         maxZoom,
+        changeMaxZoom,
         handleZoomReset,
         handleZoomIn,
         handleZoomOut,
         isZoomResetAllowed,
         isZoomInAllowed,
         isZoomOutAllowed
+
     };
 }

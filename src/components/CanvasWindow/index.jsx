@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CanvasLayer } from './CanvasLayer';
 
 import { useKeyPress, useZoom } from './../../hooks';
@@ -41,6 +41,8 @@ const CanvasWindow = ({ ...props }) =>
                 break;
             case ".":
                 handleZoomReset();
+                break;
+            default:
                 break;
         }
     });

@@ -2,7 +2,7 @@ export const drawGrid = (
     ctx,
     data
 ) => {
-    if(ctx, data)
+    if(ctx && data)
     {
         let s = 24 / data.zoom;
         let pL = 0;
@@ -30,7 +30,6 @@ export const drawGrid = (
         }
         
         ctx.stroke();
-    
         ctx.restore();    
     }
     

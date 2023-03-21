@@ -53,7 +53,7 @@ export const useCanvas = (contextType = '2d', contextAttributes = undefined) => 
 	useEffect(() => {
 		updateContext();
 		return () => cancelAnimationFrame(animationFrameId);
-	}, []);
+	}, [animationFrameId, updateContext]);
 
 	return [canvasRef, setTracer, frame, fps];
 };

@@ -34,3 +34,30 @@ export const drawNodeConnectionLine = (
 
     }
 }
+
+
+// context.beginPath();
+// context.lineWidth = 2;
+// context.strokeStyle = '#121212';
+
+// const curve = {
+//     from: { x: 300, y: 50 }, 
+//     to: { x: 500, y: 200 }
+// }
+
+// context.moveTo(
+//     curve.from.x, // start x 
+//     curve.from.y // start y
+// );
+// context.bezierCurveTo(
+//     (curve.to.x + curve.from.x) / 2, // halb zwischen start x und ende x
+//     curve.from.y, // auch start y
+
+
+//     (curve.to.x + curve.from.x) / 2, // halb zwischen start x und ende x
+//     curve.to.y, // auch ende y
+    
+//     curve.to.x, // ende x
+//     curve.to.y  // ende y
+// );
+// context.stroke();
