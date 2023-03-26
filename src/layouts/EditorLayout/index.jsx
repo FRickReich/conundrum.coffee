@@ -1,10 +1,14 @@
 import Split from 'react-split';
-import { AdPanel, ConsoleView, EditorView, ViewPanel } from '../../components';
+import { AdPanel, ConsoleView, EditorView, ViewPanel, Button } from '../../components';
+
+import { useEditor } from './../../context/EditorContext'
 
 import './EditorLayout.scss';
 
 const EditorLayout = (props) =>
 {
+    const { nodes, createNode } = useEditor();
+
     return (
         <div className="EditorLayout">
             <div className="viewport">
@@ -22,7 +26,13 @@ const EditorLayout = (props) =>
                             minSize={[28, 28]}
                             gutterSize={4}
                         >
-                            <ViewPanel title="Library">A</ViewPanel>
+                            <ViewPanel title="Library" content={
+                                <>
+                                    <Button
+                                        onClick={() => createNode({ uid: "4", x: Math.floor(Math.random() * (500 - 200) + 200), y: 450, w: 250, h: 250, title: "4", type: "node" })}
+                                    >Create</Button>
+                                </>
+                            }/>
                             <ViewPanel title="Assets">B</ViewPanel>
                         </Split>
                         <AdPanel/>

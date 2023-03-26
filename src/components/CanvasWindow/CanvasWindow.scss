@@ -4,4 +4,38 @@
 {
     height: calc(100% - 1.75rem);
     width: 100%;
+
+    .CanvasWindow__menu
+    {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        button
+        {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.5rem;
+            outline: none;
+            border: none;
+            background: rgba(0, 0, 0, 0.35);
+            color: white;
+            
+            &.disabled
+            {
+                background: rgba(0, 0, 0, 0.35);
+                color: darkgray;
+            }
+            
+            &:not(.disabled):hover
+            {
+                background: rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+            }
+        }
+    }
 }

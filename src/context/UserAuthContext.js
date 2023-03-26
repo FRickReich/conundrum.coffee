@@ -7,6 +7,7 @@ import {
     GoogleAuthProvider,
     GithubAuthProvider,
     signInWithPopup,
+    sendEmailVerification,
 } from "firebase/auth";
 import {
     query,
@@ -38,7 +39,7 @@ export const UserAuthContextProvider = ({ children }) =>
         return signOut(auth);
     }
 
-    function googleSignIn() {
+    const googleSignIn = () => {
         const googleAuthProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleAuthProvider);
     }
