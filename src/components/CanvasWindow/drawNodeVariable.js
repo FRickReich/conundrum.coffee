@@ -4,7 +4,7 @@ export const drawNodeVariable = (
 ) => {
     if(ctx)
     {
-        const { x, y, w, h, title = "Default", zoom } = data;
+        const { x, y, w, h, title = "Default", zoom, selected } = data;
 
         const handleSize = input => input / zoom;
 
@@ -57,7 +57,7 @@ export const drawNodeVariable = (
 
         // background of node box
         ctx.beginPath();
-        ctx.fillStyle = "#333333";
+        ctx.fillStyle = selected ? "#444444" : "#333333";
         ctx.roundRect(zoomedX, zoomedY, zoomedW, zoomedH, handleSize(5));
         
         ctx.lineWidth = handleSize(4);

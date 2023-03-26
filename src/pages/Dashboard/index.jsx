@@ -7,14 +7,16 @@ import { useUserAuth } from "../../context/";
 import DashboardLayout from "../../layouts/DashboardLayout";
 import DashboardArea from "../../components/DashboardArea";
 import { Button } from "../../components";
-// import { useProject } from "../../hooks";
+import { useEmail } from "../../hooks";
 
 import { db } from "../../firebase";
-import { query, where, getDocs, collection } from "firebase/firestore";
+import { query, where, getDocs, collection, addDoc } from "firebase/firestore";
 
 const Dashboard = () => {
     const [projects, setProjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    
+    const { send } = useEmail();
 
     const { user } = useUserAuth();
     const { username } = useParams();
@@ -66,6 +68,13 @@ const Dashboard = () => {
                                             style={{ paddingTop: "10rem", margin: "0 auto", width: "50%" }}
                                         />)
                                 }
+                                <br />
+                                {/* <button onClick={() => setName({val:'foo', callback: ()=>setName({val: 'then bar'})})}>Send Email!</button> */}
+                                <button onClick={ () => send({
+                                    to: "frickreich@gmail.com",
+                                    subject: `${ username }, You created a new Project!`,
+                                    body: "Hello World!"
+                                }, (g) => console.log(g))}>SEND!</button>
                             </>
                         )
                         :

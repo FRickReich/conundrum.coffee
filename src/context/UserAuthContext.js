@@ -7,6 +7,7 @@ import {
     GoogleAuthProvider,
     GithubAuthProvider,
     signInWithPopup,
+    sendEmailVerification,
 } from "firebase/auth";
 import {
     query,

@@ -4,7 +4,7 @@ export const drawNode = (
 ) => {
     if(ctx)
     {
-        const { x, y, w, h, title = "Default", zoom } = data;
+        const { x, y, w, h, title = "Default", zoom, selected } = data;
 
         const handleSize = (input) =>
         {
@@ -92,7 +92,7 @@ export const drawNode = (
     
         // background of title
         ctx.beginPath();
-        ctx.fillStyle = "#333333";
+        ctx.fillStyle = selected ? "#444444" : "#333333";
         ctx.fillRect(zoomedX, zoomedY, zoomedW, handleSize(20));
         ctx.fill();
     

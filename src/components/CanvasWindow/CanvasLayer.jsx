@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useCanvas } from "./../../hooks/useCanvas";
+import { useCanvas, useToggle } from "./../../hooks/";
 
 import { drawBackground } from "./drawBackground";
 import { drawNode } from "./drawNode";
@@ -53,14 +53,16 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
             if(boxes[i].type === "node")
             {
                 if (x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + 20) {
+                    boxes[i].selected = true;
                     dragTarget = box;
                     isTarget = true;
                     break;
                 }
-               }
+            }
             else if(boxes[i].type === "variable")
             {
                 if (x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + box.h) {
+                    boxes[i].selected = true;
                     dragTarget = box;
                     isTarget = true;
                     break;
@@ -100,13 +102,17 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
     }
     const handleMouseUp = e => {
         isTarget = null;
+        
+        if(dragTarget !== null)
+        {
+            dragTarget.selected = false;
+        }
         dragTarget = null;
         isDown = false;
     }
     const handleMouseOut = e => {
         handleMouseUp(e);
     }
-
 
 	return (
         <>
