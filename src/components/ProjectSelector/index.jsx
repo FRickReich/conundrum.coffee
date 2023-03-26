@@ -104,10 +104,10 @@ const ProjectSelector = ({ userInfo, ...props }) => {
                                     {
                                         projects.length !== 0 ?
                                             (
-                                                <ul>
+                                                <ul className="ProjectSelector__menu__list__items">
                                                     {
                                                         projects.map((project, i) => {
-                                                            return <li key={i}>
+                                                            return <li key={i} className='ProjectSelector__menu__list__items__item'>
                                                                 <Link
                                                                     to={`/${userInfo.username}/${project.data().uid}`}
                                                                     onClick={() => setOpen(false)}

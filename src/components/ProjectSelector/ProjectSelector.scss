@@ -73,7 +73,35 @@
         &__list
         {
             flex-grow: 1;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.5rem;
+            
+            &__items
+            {
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+
+                &__item
+                {
+                    display: flex;
+                    
+                    a
+                    {
+                        text-decoration: none;
+                        font-weight: bold;
+                        width: 100%;
+                        padding: 1rem 0.5rem;
+                        border-radius: 5px;
+                        color: black;
+                        
+                        &:hover
+                        {
+                            background: rgba(0, 0, 0, 0.25);
+                        }
+                    }
+                }
+            }
         }
 
         &__interaction
