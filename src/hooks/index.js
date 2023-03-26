@@ -7,6 +7,7 @@ import { useTimeout } from './useTimeout';
 import { useCanvas } from './useCanvas';
 import { useToggle } from './useToggle';
 import { useEmail } from './useEmail';
+import { useDrawNodes } from './useDrawNode';
 
 export { 
     useOutsideClick, 
@@ -17,5 +18,6 @@ export {
     useTimeout, 
     useCanvas, 
     useToggle,
-    useEmail
+    useEmail,
+    useDrawNodes
 }

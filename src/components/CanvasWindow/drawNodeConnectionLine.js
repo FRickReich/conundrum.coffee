@@ -15,7 +15,31 @@ export const drawNodeConnectionLine = (
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.lineWidth = handleSize(4);
-        ctx.strokeStyle = 'red';
+
+        
+        if(from.x < to.x)
+        {
+            if(from.y < to.y)
+            {
+                ctx.strokeStyle = 'red';
+            }
+            if(from.y > to.y)
+            {
+                ctx.strokeStyle = 'blue';
+            }
+        }
+        if(from.x > to.x)
+        {
+            if(from.y < to.y)
+            {
+                ctx.strokeStyle = "orange";
+            }
+            if(from.y > to.y)
+            {
+                ctx.strokeStyle = "lightgreen";
+            }
+        }
+
         ctx.beginPath();
 
         if(parentType === "node")
@@ -26,7 +50,7 @@ export const drawNodeConnectionLine = (
         {
             ctx.moveTo((handleSize(from.x) + handleSize(from.w)) - handleSize(10), handleSize(from.y) + handleSize(from.h / 2));
         }
-        
+
         ctx.lineTo(handleSize(to.x) + handleSize(10), handleSize(to.y) + handleSize(10));
 
         ctx.stroke();

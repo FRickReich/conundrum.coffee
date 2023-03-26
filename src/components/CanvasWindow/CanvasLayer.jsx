@@ -1,15 +1,18 @@
 import { useEffect } from 'react';
-import { useCanvas, useToggle } from "./../../hooks/";
+import { useCanvas, useToggle, useDrawNodes } from "./../../hooks/";
 
 import { drawBackground } from "./drawBackground";
-import { drawNode } from "./drawNode";
+import { drawNodeFunc } from "./drawNodeFunc";
 import { drawGrid } from './drawGrid';
 import { drawNodeConnectionLine } from "./drawNodeConnectionLine";
 import { drawNodeVariable } from "./drawNodeVariable";
+import { useEditor } from '../../context/EditorContext';
 
 export const CanvasLayer = ({ width, height, zoom, ...props }) =>
 {
     const [canvasRef, tracer, frame ] = useCanvas('2d');
+
+    const { nodes, setCurrentZoom } = useEditor();
 
     let isDown = false;
     let dragTarget = null;
@@ -17,22 +20,16 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
     let startY = null;
     let isTarget = null;
 
-    const boxes = [
-        { x: 200, y: 200, w: 150, h: 50, title: "testValue", type: "variable" },
-        { x: 400, y: 110, w: 150, h: 120, title: "2", type: "node" },
-        { x: 600, y: 150, w: 150, h: 150, title: "3", type: "node" }
-    ];
-
 	const draw = tracer((context) => {
         context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 		
         drawBackground(context, { x: canvasRef.current.width, y: canvasRef.current.height});
         drawGrid(context, { zoom, x: canvasRef.current.width, y: canvasRef.current.height });
 
-        boxes.map((data, i, arr) => 
+        nodes.map((data, i, arr) => 
         {
             if(data.type === "variable") drawNodeVariable(context, { zoom, ...data});
-            if(data.type === "node") drawNode(context, { zoom, ...data});
+            if(data.type === "node") drawNodeFunc(context, { zoom, ...data});
 
             if(i > 0)
             {
@@ -43,26 +40,25 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
         });
 	});
 
-
     const hitBox = (x, y) => {
         isTarget = null;
 
-        for (let i = 0; i < boxes.length; i++)
+        for (let i = 0; i < nodes.length; i++)
         {
-            const box = boxes[i];
-            if(boxes[i].type === "node")
+            const box = nodes[i];
+            if(nodes[i].type === "node")
             {
                 if (x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + 20) {
-                    boxes[i].selected = true;
+                    nodes[i].selected = true;
                     dragTarget = box;
                     isTarget = true;
                     break;
                 }
             }
-            else if(boxes[i].type === "variable")
+            else if(nodes[i].type === "variable")
             {
                 if (x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + box.h) {
-                    boxes[i].selected = true;
+                    nodes[i].selected = true;
                     dragTarget = box;
                     isTarget = true;
                     break;
@@ -110,6 +106,7 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
         dragTarget = null;
         isDown = false;
     }
+
     const handleMouseOut = e => {
         handleMouseUp(e);
     }
