@@ -1,5 +1,6 @@
 import CanvasWindow from '../CanvasWindow';
 import ViewPanel from '../ViewPanel';
+import ViewPanelButton from '../ViewPanelButton';
 
 import './EditorView.scss';
 
@@ -10,12 +11,17 @@ const EditorView = () =>
             className="EditorView"
             unscrollable={true}
             title={ "Editor" }
-            content={
-                <div className="EditorView__canvas__container" >
-                    <CanvasWindow/>
-                </div>
+            menu={
+                <>
+                    <ViewPanelButton label="Run"/>
+                    <ViewPanelButton label="View Code"/>
+                </>
             }
-        />
+        >
+            <div className="EditorView__canvas__container" >
+                <CanvasWindow/>
+            </div>
+        </ViewPanel>
     );
 };
   

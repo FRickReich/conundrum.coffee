@@ -4,7 +4,7 @@ export const drawNodeVariable = (
 ) => {
     if(ctx)
     {
-        const { x, y, w, h, title = "Default", zoom, selected } = data;
+        const { x, y, w, h, name = "Default", zoom, selected } = data;
 
         const handleSize = input => input / zoom;
 
@@ -71,7 +71,7 @@ export const drawNodeVariable = (
         ctx.beginPath();
         ctx.font = `${handleSize(12)}px Helvetica`;
         ctx.fillStyle = 'white';
-        ctx.fillText(title, zoomedX + handleSize(23), zoomedY + handleSize(h / 2 + 3));
+        ctx.fillText(name, zoomedX + handleSize(23), zoomedY + handleSize(h / 2 + 3));
 
         outputProperty({ title: "number", color: "#f8d568", textColor: "#f8d568" });
         

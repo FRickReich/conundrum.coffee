@@ -1,5 +1,5 @@
 import Split from 'react-split';
-import { AdPanel, ConsoleView, EditorView, ViewPanel, Button } from '../../components';
+import { AdPanel, ConsoleView, EditorView, ViewPanel, Button, NodeBrowser, PropertiesWindow } from '../../components';
 
 import { useEditor } from './../../context/EditorContext'
 
@@ -7,7 +7,7 @@ import './EditorLayout.scss';
 
 const EditorLayout = (props) =>
 {
-    const { nodes, createNode } = useEditor();
+    const { nodes, createNode, selectedNode } = useEditor();
 
     return (
         <div className="EditorLayout">
@@ -19,22 +19,28 @@ const EditorLayout = (props) =>
                     sizes={[15, 70, 15]}
                 >
                     <div className="browser">
-                        <Split
+                        {/* <Split
                             className="split-panel"
                             direction="vertical"
                             sizes={[50, 50]}
                             minSize={[28, 28]}
                             gutterSize={4}
                         >
-                            <ViewPanel title="Library" content={
+                            {/* <ViewPanel title="Library" content={
                                 <>
-                                    <Button
+                                    {/* <Button
                                         onClick={() => createNode({ uid: "4", x: Math.floor(Math.random() * (500 - 200) + 200), y: 450, w: 250, h: 250, title: "4", type: "node" })}
-                                    >Create</Button>
+                                    >Create</Button> 
+                                    <NodeBrowser/>
                                 </>
                             }/>
-                            <ViewPanel title="Assets">B</ViewPanel>
-                        </Split>
+                             
+                            <NodeBrowser/>
+                            <ViewPanel title="Assets">
+                                Project assets
+                            </ViewPanel>
+                        </Split> */}
+                        <NodeBrowser/>
                         <AdPanel/>
                     </div>
 
@@ -59,8 +65,10 @@ const EditorLayout = (props) =>
                             minSize={[28, 28]}
                             gutterSize={4}
                             >
-                                <ViewPanel title="Nodes">A</ViewPanel>
-                                <ViewPanel title="Properties">B</ViewPanel>
+                                <ViewPanel title="Assets">
+                                    Project assets
+                                </ViewPanel>
+                                <PropertiesWindow />
                         </Split>
                     </div>
                 </Split>
