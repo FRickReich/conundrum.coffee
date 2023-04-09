@@ -10,9 +10,12 @@ import './ProjectSelector.scss';
 import Panel from '../Panel';
 import { Link, useLocation } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { trace } from "firebase/performance";
+import { db, perf } from '../../firebase';
 
 const ProjectSelector = ({ userInfo, ...props }) => {
+
+    const t = trace(perf, "SELECT_PROJECT");
 
     const location = useLocation();
 
@@ -54,6 +57,7 @@ const ProjectSelector = ({ userInfo, ...props }) => {
     }
 
     const getProjectsByOwner = async () => {
+        t.start();
         const q = query(collection(db, "projects"), where("ownerId", "==", userInfo.uid));
 
         const ownerProjects = await getDocs(q);
@@ -61,6 +65,7 @@ const ProjectSelector = ({ userInfo, ...props }) => {
         await setProjects(ownerProjects.docs);
         await handleCurrentProjectByOwner();
         await setIsLoading(false);
+        t.stop();   
     }
 
     useEffect(() => {

@@ -113,6 +113,7 @@ const NodeBrowser = ({ children }) =>
         <ViewPanel
             title="Library"
             className="NodeBrowser"
+            scollable={true}
             menu={
                 <>
                     <ViewPanelButton label="Collapse All" onClick={() => collapseAll()}/>
