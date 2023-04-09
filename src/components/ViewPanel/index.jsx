@@ -18,7 +18,7 @@ const ViewPanel = React.forwardRef((props, ref) =>
             </div>
             <div className="ViewPanel__content">
                 <Scrollable inactive={props.unscrollable}>
-                    { props.content }
+                    { props.children }
                 </Scrollable>
             </div>
         </div>

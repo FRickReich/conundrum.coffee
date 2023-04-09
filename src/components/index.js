@@ -12,6 +12,8 @@ import Avatar from './Avatar';
 import ToggleMenu from './ToggleMenu';
 import ProjectSelector from './ProjectSelector';
 import Panel from './Panel';
+import NodeBrowser from './NodeBrowser';
+import PropertiesWindow from './PropertiesWindow';
 
 export {
     ViewPanel,
@@ -27,5 +29,7 @@ export {
     Avatar,
     ToggleMenu,
     ProjectSelector,
-    Panel
+    Panel,
+    NodeBrowser,
+    PropertiesWindow
 }

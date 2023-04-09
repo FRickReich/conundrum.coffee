@@ -21,6 +21,7 @@ const exampleNode2 =
 
 export const EditorProvider = ({ children }) =>
 {
+    const [ selectedNode, setSelectedNode ] = useState(null);
     const [ currentProject, setCurrentProject ] = useState(null);
     const [ context, setContext ] = useState();
     const [ nodes, setNodes] = useState(
@@ -44,6 +45,8 @@ export const EditorProvider = ({ children }) =>
                 setNodes,
                 context,
                 setContext,
+                setSelectedNode,
+                selectedNode,
                 createNode,
             }}
             children={children}

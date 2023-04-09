@@ -1,0 +1,74 @@
+@use './../../styles/' as *;
+
+.NodeBrowser
+{
+    height: 100%;
+
+    .Scrollable__container__content
+    {
+        margin: 0 !important;
+    }
+
+    &__itemsList
+    {
+        &__item
+        {
+            &.layer-1
+            {
+                padding-left: 0.5rem;
+            }
+            &.layer-2
+            {
+                padding-left: 1.25rem;
+            }
+            &.layer-3
+            {
+                padding-left: 2rem;
+            }
+            &.layer-4
+            {
+                padding-left: 2.75rem;
+            }
+            &.layer-5
+            {
+                padding-left: 3.5rem;
+            }
+            &.layer-6
+            {
+                padding-left: 4.25rem;
+            }
+
+            &.directory
+            {
+                color: $text-emphasis-medium;
+                background: $elevation-3;
+
+                &.open
+                {
+                    background: $elevation-9;
+                }
+            }
+
+            &.file
+            {
+                background: $elevation-1;
+            }
+
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0.5rem;
+            
+            &:not(:last-of-type)
+            {
+                border-bottom: 1px solid $dark;
+            }
+
+            &:hover
+            {
+                color: $text-emphasis-high;
+                background: $elevation-7;
+                cursor: pointer;
+            }
+        }
+    }
+}

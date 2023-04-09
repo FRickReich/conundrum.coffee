@@ -12,7 +12,7 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
 {
     const [canvasRef, tracer, frame ] = useCanvas('2d');
 
-    const { nodes, setCurrentZoom } = useEditor();
+    const { nodes, setCurrentZoom, setSelectedNode, selectedNode } = useEditor();
 
     let isDown = false;
     let dragTarget = null;
@@ -20,11 +20,28 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
     let startY = null;
     let isTarget = null;
 
+    const selectTarget = (box) =>
+    {
+        if(selectedNode === null)
+        {
+            setSelectedNode(box);
+        }
+        else if(box.uid !== selectedNode.uid)
+        {
+            setSelectedNode(box);
+        }
+    }
+
 	const draw = tracer((context) => {
         context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 		
         drawBackground(context, { x: canvasRef.current.width, y: canvasRef.current.height});
         drawGrid(context, { zoom, x: canvasRef.current.width, y: canvasRef.current.height });
+
+        if(dragTarget !== null)
+        {
+            selectTarget(dragTarget);
+        }
 
         nodes.map((data, i, arr) => 
         {
@@ -43,6 +60,7 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
     const hitBox = (x, y) => {
         isTarget = null;
 
+        
         for (let i = 0; i < nodes.length; i++)
         {
             const box = nodes[i];
@@ -99,6 +117,7 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
     const handleMouseUp = e => {
         isTarget = null;
         
+        
         if(dragTarget !== null)
         {
             dragTarget.selected = false;
@@ -113,17 +132,17 @@ export const CanvasLayer = ({ width, height, zoom, ...props }) =>
 
 	return (
         <>
-		<canvas
-            className={`CanvasLayer`}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseOut={handleMouseOut}
-			width={width}
-			height={height}
-			ref={canvasRef}
-            {...props}
-		/>
+            <canvas
+                className={`CanvasLayer`}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseOut={handleMouseOut}
+                width={width}
+                height={height}
+                ref={canvasRef}
+                {...props}
+            />
         </>
 	);
 }

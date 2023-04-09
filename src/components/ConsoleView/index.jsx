@@ -10,14 +10,15 @@ const ConsoleView = (props) =>
             className="ConsoleView"
             title="Console" 
             scollable={true}
-            content={props.body || ">" }
             menu={
                 <>
                     <ViewPanelButton label="Clear"/>
                     <ViewPanelButton label="Copy"/>
                 </>
             }
-        />
+        >
+            {props.body || ">" }
+        </ViewPanel>
     );
 };
   
