@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { useEditor } from './../../context/EditorContext'
 
 import ViewPanel from '../ViewPanel';
 import NodeBrowserItem from './NodeBrowserItem';
@@ -12,7 +13,7 @@ const NodeBrowser = ({ children }) =>
 {
     const [ isExpanded, setIsExpanded ] = useState(true);
 
-    const nodeList =
+    const nodeLibrary =
     {
         name: "JavaScript",
         type: "folder",
@@ -121,7 +122,7 @@ const NodeBrowser = ({ children }) =>
             }
         >
             <div className="NodeBrowser__itemsList">
-                <NodeBrowserItem files={nodeList} expanded={isExpanded}/>
+                <NodeBrowserItem files={nodeLibrary} expanded={isExpanded}/>
             </div>
         </ViewPanel>
     );
