@@ -14,6 +14,7 @@ import ProjectSelector from './ProjectSelector';
 import Panel from './Panel';
 import NodeBrowser from './NodeBrowser';
 import PropertiesWindow from './PropertiesWindow';
+import AssetWindow from './AssetWindow';
 
 export {
     ViewPanel,
@@ -31,5 +32,6 @@ export {
     ProjectSelector,
     Panel,
     NodeBrowser,
-    PropertiesWindow
+    PropertiesWindow,
+    AssetWindow
 }

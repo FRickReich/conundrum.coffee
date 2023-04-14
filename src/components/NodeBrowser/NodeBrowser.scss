@@ -2,7 +2,8 @@
 
 .NodeBrowser
 {
-    height: 100%;
+    flex-grow: 0;
+    flex-basis: 100%;
 
     .Scrollable__container__content
     {
@@ -11,6 +12,8 @@
 
     &__itemsList
     {
+        max-height: 100%;
+        
         &__item
         {
             &.layer-1
