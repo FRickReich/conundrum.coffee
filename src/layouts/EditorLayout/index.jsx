@@ -1,13 +1,16 @@
-import { AdPanel, ConsoleView, EditorView, NodeBrowser, PropertiesWindow, AssetWindow } from '../../components';
+import { AdPanel, ConsoleView, EditorView, ViewPanel, Button, NodeBrowser, PropertiesWindow, AssetWindow } from '../../components';
 
 // @todo: reimplement react-split
 // @body: removed the use of react-split for now, implementation needs to be rewritten, when main editor visuals are finished
 
-import './EditorLayout.scss';
+import { useEditor } from './../../context/EditorContext'
 
+import './EditorLayout.scss';
 
 const EditorLayout = (props) =>
 {
+    const { nodes, createNode, selectedNode } = useEditor();
+
     return (
         <div className="EditorLayout">
             <div className="viewport">
